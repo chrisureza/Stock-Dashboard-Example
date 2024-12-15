@@ -70,8 +70,8 @@ export const stockRandomData = (index: number) => {
   const stockKey = `Stock-${index + 1}`;
   const original = stockStaticData[stockKey];
 
-  // Determine a price variation between -10 and +10 to simulate an increase or decrease.
-  const change = parseFloat((Math.random() * 20 - 10).toFixed(2));
+// Determine a price variation between -20 and +20 to simulate a smaller increase or decrease.
+const change = parseFloat((Math.random() * 40 - 20).toFixed(2));
 
   // Calculate the new price based on the original price and the variation.
   const newPrice = parseFloat((original.price + change).toFixed(2));

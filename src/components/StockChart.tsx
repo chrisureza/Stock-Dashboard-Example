@@ -30,14 +30,15 @@ export const StockChart = ({ data }: IStockChart) => {
     </div>
   );
 
+  const trendColor = {up: 'text-green-300', down: 'text-red-400', neutral: ''};
   const Change = () => (
     <div className="mb-2">
       {mention('Change:')}
       <div className="grid grid-cols-3 gap-4">
-        <div className="text-left">
+        <div className={`text-left ${trendColor[data.trend]}`}>
           {subtitle(data.trend.toLocaleUpperCase(), 'text-lg')}
         </div>
-        <div>
+        <div className="text-center">
           {subtitle(`$${data.change}`, 'text-lg')}
         </div>
         <div className="text-right">
@@ -48,7 +49,7 @@ export const StockChart = ({ data }: IStockChart) => {
   );
 
   const Chart = () => (
-    <ResponsiveContainer width="100%" height={140} >
+    <ResponsiveContainer width="100%" height={80} >
       <LineChart
         data={data.price.map(price => ({ price }))}
         margin={{ top: 0, right: 0, left: -20, bottom: -20 }}
@@ -59,8 +60,8 @@ export const StockChart = ({ data }: IStockChart) => {
         <Line
           type="linear"
           dataKey="price"
-          stroke="#82ca9d"
-          fill="#82ca9d"
+          stroke="#008CB4"
+          fill="#008CB4"
         />
       </LineChart>
     </ResponsiveContainer>

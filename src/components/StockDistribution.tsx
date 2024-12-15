@@ -11,7 +11,7 @@ export const StockDistribution = () => {
     <div className="pt-2 pb-2 pl-4 pr-4">
       {text('Distribution:', 'font-bold')}
       {data.map(stock => (
-        <div className="flex gap-2">
+        <div className="flex justify-between gap-2 md:w-[120px]">
           {text(`${stock.ticket}:`, 'text-neutral-300')}
           {text(`${stock.distributionPercentage}%`, 'font-bold')}
         </div>

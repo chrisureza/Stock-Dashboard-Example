@@ -19,7 +19,7 @@ const Dashboard = () => {
       <h1 className="text-5xl font-bold mb-3 p-4">{appTitle}</h1>
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Info Resume Container */}
-        <div className="w-full lg:w-[30%] p-4">
+        <div className="w-full lg:w-[20%] p-4">
           <p className="text-xl font-bold mb-2">My Balance:</p>
           <Card>
             <BalanceResume />
@@ -27,7 +27,7 @@ const Dashboard = () => {
           </Card>
         </div>
         {/* Stock charts Container */}
-        <div className="w-full lg:w-[70%] p-4">
+        <div className="w-full lg:w-[80%] p-4">
           <p className="text-xl font-bold mb-2">My Stocks:</p>
           {data.length ?
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
