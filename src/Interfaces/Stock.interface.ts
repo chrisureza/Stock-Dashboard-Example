@@ -10,6 +10,7 @@ export interface Stock {
 	change: number;
 	percentageChange: number;
 	trend: Trend;
+	distributionPercentage: number;
 }
 
 export interface StockStaticData {
@@ -18,5 +19,6 @@ export interface StockStaticData {
 		ticket: string,
 		sector: string,
 		price: number,
+		distributionPercentage: number;
 	}
 }
