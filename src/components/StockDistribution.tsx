@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { AppConstants } from "../constants/AppConstants";
 import { useAppContext } from "../context/AppContext";
 import { Stock } from "../Interfaces/Stock.interface";
