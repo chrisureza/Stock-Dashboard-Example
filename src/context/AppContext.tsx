@@ -4,15 +4,18 @@ import { Stock } from '../Interfaces/Stock.interface';
 interface AppState {
   data: Stock[];
   setData: React.Dispatch<React.SetStateAction<Stock[]>>;
+  totalBalance: number;
+  setTotalBalance: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const AppContext = createContext<AppState | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [data, setData] = useState<Stock[]>([]);
+  const [totalBalance, setTotalBalance] = useState<number>(0);
 
   return (
-    <AppContext.Provider value={{ data, setData }}>
+    <AppContext.Provider value={{ data, setData, totalBalance, setTotalBalance }}>
       {children}
     </AppContext.Provider>
   );

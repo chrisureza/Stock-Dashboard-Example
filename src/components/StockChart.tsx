@@ -1,6 +1,7 @@
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Stock } from "../Interfaces/Stock.interface"
 import { formatTime } from "../utils/FormatTime";
+import { stockPriceColor } from "../utils/StockCalcs";
 
 interface IStockChart {
   data: Stock,
@@ -30,12 +31,11 @@ export const StockChart = ({ data }: IStockChart) => {
     </div>
   );
 
-  const trendColor = {up: 'text-green-300', down: 'text-red-400', neutral: ''};
   const Change = () => (
     <div className="mb-2">
       {mention('Change:')}
       <div className="grid grid-cols-3 gap-4">
-        <div className={`text-left ${trendColor[data.trend]}`}>
+        <div className={`text-left ${stockPriceColor(data.trend !== 'down')}`}>
           {subtitle(data.trend.toLocaleUpperCase(), 'text-lg')}
         </div>
         <div className="text-center">
