@@ -29,7 +29,7 @@ export const useWebSocket = () => {
 
       setData((prev) => {
         return prev.length
-          // creates an array with the price history. (last 5 elements)
+          // creates an array with the price history. (last 15 elements)
           ? newData.map((item: any, index: number) => ({ ...item, price: [...prev[index].price, ...item.price].slice(-15) }))
           : newData;
       });
