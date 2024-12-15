@@ -1,6 +1,6 @@
 import { stockRandomData } from "../utils/StockCalcs";
 
 export const AppConstants = {
-  appTitle: 'Real Time Stock Dashboard',
+  appTitle: 'Stock Dashboard',
   stockData: stockRandomData,
 }

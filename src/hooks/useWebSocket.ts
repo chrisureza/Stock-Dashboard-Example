@@ -14,7 +14,7 @@ export const useWebSocket = () => {
 
       // Sends simulated data of 10 stocks every 3 seconds
       const interval = setInterval(() => {
-        const stocks = Array.from({ length: 8 }, (_, index) => stockData(index));
+        const stocks = Array.from({ length: 9 }, (_, index) => stockData(index));
         socket.send(JSON.stringify(stocks));
         console.log('Message sent:', stocks);
       }, 3000);
@@ -30,7 +30,7 @@ export const useWebSocket = () => {
       setData((prev) => {
         return prev.length
           // creates an array with the price history. (last 5 elements)
-          ? newData.map((item: any, index: number) => ({ ...item, price: [...prev[index].price, ...item.price].slice(-5) }))
+          ? newData.map((item: any, index: number) => ({ ...item, price: [...prev[index].price, ...item.price].slice(-15) }))
           : newData;
       });
     };
