@@ -35,14 +35,14 @@ export const StockChart = ({ data }: IStockChart) => {
     <div className="mb-2">
       {mention('Change:')}
       <div className="grid grid-cols-3 gap-4">
-        <div className={`text-left ${stockPriceColor(data.trend !== 'down')}`}>
-          {subtitle(data.trend.toLocaleUpperCase(), 'text-lg')}
+        <div className="text-left">
+          {subtitle(`${data.percentageChange}%`, 'text-lg')}
         </div>
         <div className="text-center">
           {subtitle(`$${data.change}`, 'text-lg')}
         </div>
-        <div className="text-right">
-          {subtitle(`${data.percentageChange}%`, 'text-lg')}
+        <div className={`text-right ${stockPriceColor(data.trend !== 'down')}`}>
+          {subtitle(data.trend.toLocaleUpperCase(), 'text-lg')}
         </div>
       </div>
     </div>
