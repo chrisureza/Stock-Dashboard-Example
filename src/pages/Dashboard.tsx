@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { useWebSocket } from '../hooks/useWebSocket';
 import { AppConstants } from '../constants/AppConstants';
@@ -15,8 +15,15 @@ const Dashboard = () => {
   const { data, filterString } = useAppContext();
   const { appTitle } = AppConstants;
 
-  // State for selected sorting option
-  const [sortOption, setSortOption] = useState<string>('1');
+  // State for selected sorting option, initialize with localStorage value
+  const [sortOption, setSortOption] = useState<string>(
+    localStorage.getItem('sortOption') || '1'
+  );
+
+  // Save the selected option to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('sortOption', sortOption);
+  }, [sortOption]);
 
   // Handle sorting selection
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
