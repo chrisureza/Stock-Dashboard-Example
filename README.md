@@ -1,6 +1,6 @@
 # Realtime Dashboard
 
-A modern React-based realtime stock dashboard application. This project leverages **Recharts**, **React Spinners**, and **Tailwind CSS** for a dynamic and visually appealing experience.
+A modern React-based realtime stock dashboard application. This project uses **Recharts**, **React Spinners**, and **Tailwind CSS** for a dynamic and visually appealing experience.
 
 ---
 
