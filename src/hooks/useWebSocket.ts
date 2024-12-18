@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { AppConstants } from '../constants/AppConstants';
+import { Stock } from '../Interfaces/Stock.interface';
 
 export const useWebSocket = () => {
   const { setData } = useAppContext();
@@ -27,10 +28,10 @@ export const useWebSocket = () => {
       const newData = JSON.parse(event.data);
       console.log('Message received:', newData);
 
-      setData((prev) => {
+      setData((prev: Stock[]) => {
         return prev.length
           // creates an array with the price history. (last 15 elements)
-          ? newData.map((item: any, index: number) => ({ ...item, price: [...prev[index].price, ...item.price].slice(-15) }))
+          ? newData.map((item: Stock, index: number) => ({ ...item, price: [...prev[index].price, ...item.price].slice(-15) }))
           : newData;
       });
     };
@@ -40,5 +41,5 @@ export const useWebSocket = () => {
     return () => {
       socket.close(); // Closes the connection when the component unmounts
     };
-  }, [setData]);
+  }, [setData, stockData]);
 };
