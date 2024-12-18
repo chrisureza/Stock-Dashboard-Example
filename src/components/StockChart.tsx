@@ -8,6 +8,8 @@ interface IStockChart {
 }
 
 export const StockChart = ({ data }: IStockChart) => {
+
+  // Helper functions to render text fields
   const title = (text: string) => (
     <p className="text-2xl whitespace-nowrap font-bold">{text}</p>
   );
@@ -18,6 +20,7 @@ export const StockChart = ({ data }: IStockChart) => {
     <p className={`text-xs text-neutral-400 whitespace-nowrap ${className}`}>{text}</p>
   );
 
+  // Header section: shows stock ticket, name, sector, and latest price
   const Header = () => (
     <div className="grid grid-cols-2 gap-4 mb-2">
       <div>
@@ -31,6 +34,7 @@ export const StockChart = ({ data }: IStockChart) => {
     </div>
   );
 
+  // Change section: displays stock percentage change, price change, and trend
   const Change = () => (
     <div className="mb-2">
       {mention('Change:')}
@@ -48,8 +52,9 @@ export const StockChart = ({ data }: IStockChart) => {
     </div>
   );
 
+  // Chart section: renders the stock price line chart
   const Chart = () => (
-    <ResponsiveContainer width="100%" height={80} >
+    <ResponsiveContainer width="100%" height={80}>
       <LineChart
         data={data.price.map(price => ({ price }))}
         margin={{ top: 0, right: 0, left: -20, bottom: -20 }}
@@ -67,6 +72,7 @@ export const StockChart = ({ data }: IStockChart) => {
     </ResponsiveContainer>
   );
 
+  // Footer section: displays volume and last update time
   const Footer = () => (
     <div className="mt-2">
       <div className="grid grid-cols-2">
@@ -80,6 +86,7 @@ export const StockChart = ({ data }: IStockChart) => {
     </div>
   );
 
+  // Main component layout
   return (
     <div className="pl-4 pr-4 pt-2 pb-2">
       {Header()}

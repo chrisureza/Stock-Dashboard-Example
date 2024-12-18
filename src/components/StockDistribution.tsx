@@ -8,6 +8,7 @@ export const StockDistribution = () => {
   const { data, setTotalBalance } = useAppContext();
   const { initialInvestment } = AppConstants;
 
+  // Effect to calculate and update the total balance whenever data changes
   useEffect(() => {
     const newTotalBalance = data.reduce((total, stock) => {
       const initialInvest = initialInvestment * (stock.distributionPercentage / 100);
@@ -17,14 +18,17 @@ export const StockDistribution = () => {
     setTotalBalance(newTotalBalance);
   }, [data, initialInvestment, setTotalBalance]);
 
+  // Helper function to render text field
   const text = (text: string, className: string = "") => (
     <p className={`text-md font-[200] whitespace-nowrap ${className}`}>{text}</p>
   );
 
+  // Helper to calculate initial investment for a stock
   const getInitialInvest = (distributionPercentage: number) => {
     return initialInvestment * (distributionPercentage / 100);
   };
 
+  // Renders stock-specific information
   const stockInfo = (stock: Stock) => {
     const { distributionPercentage, change } = stock;
     const initialInvest = getInitialInvest(distributionPercentage);
@@ -52,6 +56,7 @@ export const StockDistribution = () => {
     );
   };
 
+  // Main component layout
   return (
     <div className="pt-2 pb-2 pl-4 pr-4">
       {text("Distribution:", "font-[400] text-neutral-200 mb-2")}
